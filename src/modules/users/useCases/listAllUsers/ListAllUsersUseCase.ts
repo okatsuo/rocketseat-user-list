@@ -8,12 +8,12 @@ interface IRequest {
 class ListAllUsersUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
-  private isAdminUser = (user?: User) => user?.admin === true;
+  private isAdmin = (user?: User) => user?.admin === true;
 
   execute({ user_id }: IRequest): User[] {
     const user = this.usersRepository.findById(user_id);
 
-    if (!this.isAdminUser(user)) {
+    if (!this.isAdmin(user)) {
       throw new Error("Você não tem permissão para fazer isso.");
     }
 

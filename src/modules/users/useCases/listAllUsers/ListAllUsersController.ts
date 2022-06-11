@@ -11,15 +11,8 @@ class ListAllUsersController {
   };
 
   handle(request: Request, response: Response): Response {
-    const user_id = this.getUserId(request);
-
-    if (!user_id) {
-      return response
-        .status(400)
-        .json({ error: "O header user_id é obrigatório." });
-    }
-
     try {
+      const user_id = this.getUserId(request);
       const allUsers = this.listAllUsersUseCase.execute({
         user_id,
       });
