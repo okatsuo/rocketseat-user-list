@@ -14,7 +14,7 @@ class ListAllUsersUseCase {
     const user = this.usersRepository.findById(user_id);
 
     if (!this.isAdmin(user)) {
-      throw new Error("Você não tem permissão para fazer isso.");
+      throw new Error("You dont have permission to be here");
     }
 
     return this.usersRepository.list();
